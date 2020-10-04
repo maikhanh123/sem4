@@ -4,6 +4,9 @@ import filtersReducer from "./filterReducer";
 import cartReducer from "./cartReducer";
 import totalReducer from "./totalReducer";
 import sortReducer from "./sortReducer";
+import userReducer from "./userReducer";
+import registerReducer from "./registerReducer";
+import authenticationReducer from "./authenticationReducer";
 
 const rootReducer = combineReducers({
   shelf: shelfReducer,
@@ -11,6 +14,9 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   total: totalReducer,
   sort: sortReducer,
+  users: userReducer,
+  registration: registerReducer,
+  authentication: authenticationReducer,
 });
 
 export default rootReducer;

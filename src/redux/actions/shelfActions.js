@@ -17,7 +17,6 @@ const compare = {
 };
 
 export const fetchProducts = (filters, sortBy, callback) => (dispatch) => {
-  console.log("productsAPI", productsAPI);
   return axios
     .get(productsAPI)
     .then((res) => {
