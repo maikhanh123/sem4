@@ -1,26 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Shelf from "../src/components/shelf";
+import Filter from "../src/components/shelf/filter";
+import FloatCart from "../src/components/floatCart";
+
+const App = () => (
+  <React.Fragment>
+    <main>
+      <Filter />
+      <Shelf />
+    </main>
+    <FloatCart />
+  </React.Fragment>
+);  
 
 export default App;
