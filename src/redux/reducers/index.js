@@ -8,6 +8,9 @@ import userReducer from "./userReducer";
 import registerReducer from "./registerReducer";
 import authenticationReducer from "./authenticationReducer";
 
+//admin
+import productReducer from "./admin/productReducer";
+
 const rootReducer = combineReducers({
   shelf: shelfReducer,
   filters: filtersReducer,
@@ -17,6 +20,7 @@ const rootReducer = combineReducers({
   users: userReducer,
   registration: registerReducer,
   authentication: authenticationReducer,
+  loadProducts: productReducer,
 });
 
 export default rootReducer;

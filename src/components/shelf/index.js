@@ -23,7 +23,6 @@ class Shelf extends Component {
   };
 
   componentDidMount() {
-    console.log("component did mount");
     this.handleFetchProducts();
   }
 

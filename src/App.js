@@ -5,14 +5,26 @@ import RegisterPage from "../src/components/registerPage";
 import LoginPage from "../src/components/loginPage";
 import PrivateRoute from "../src/components/admin/privateRoute";
 import HomePage from "../src/components/admin/homePage";
+import ManageProduct from "../src/components/admin/manageProduct";
+import Header from "../src/components/header";
 
-const App = () => (
-  <Switch>
-    <PrivateRoute exact path="/admin" component={HomePage} />
-    <Route exact path="/" component={ShopPage} />
-    <Route path="/register" component={RegisterPage} />
-    <Route path="/login" component={LoginPage} />
-  </Switch>
-);  
+function App() {
+  return (
+    <>
+      {window.location.pathname.includes("admin") ? <Header /> : ""}
+      <Switch>
+        <PrivateRoute exact path="/admin" component={HomePage} />
+        <PrivateRoute
+          exact
+          path="/admin/product/:id"
+          component={ManageProduct}
+        />
+        <Route exact path="/" component={ShopPage} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/login" component={LoginPage} />
+      </Switch>
+    </>
+  );
+}
 
 export default App;

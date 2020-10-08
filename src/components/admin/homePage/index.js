@@ -1,206 +1,37 @@
 import React from "react";
+import { connect } from "react-redux";
+import { loadProducts } from "../../../redux/actions/admin/productActions";
+import ProductList from "./ProductList";
+import Spinner from "../../spinner";
 
 class HomePage extends React.Component {
+  state = {
+    isLoading: false,
+  };
+  componentDidMount = () => {
+    this.handleFetchProducts();
+  };
+
+  handleFetchProducts = () => {
+    this.setState({ isLoading: true });
+    this.props.loadProducts((res) => {
+      console.log("res", res);
+      this.setState({ isLoading: false });
+    });
+  };
+
   render() {
     return (
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th class="text-center">#</th>
-              <th>Name</th>
-              <th>Job Position</th>
-              <th>Since</th>
-              <th class="text-right">Salary</th>
-              <th class="text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="text-center">1</td>
-              <td>Andrew Mike</td>
-              <td>Develop</td>
-              <td>2013</td>
-              <td class="text-right">€ 99,225</td>
-              <td class="td-actions text-right">
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-info btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">person</i>
-                </button>
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-success btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">edit</i>
-                </button>
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-danger btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">close</i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-center">2</td>
-              <td>John Doe</td>
-              <td>Design</td>
-              <td>2012</td>
-              <td class="text-right">€ 89,241</td>
-              <td class="td-actions text-right">
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-info btn-round btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">person</i>
-                </button>
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-success btn-round btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">edit</i>
-                </button>
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-danger btn-round btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">close</i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-center">3</td>
-              <td>Alex Mike</td>
-              <td>Design</td>
-              <td>2010</td>
-              <td class="text-right">€ 92,144</td>
-              <td class="td-actions text-right">
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-info btn-link btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">person</i>
-                </button>
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-success btn-link btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">edit</i>
-                </button>
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-danger btn-link btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">close</i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-center">4</td>
-              <td>Mike Monday</td>
-              <td>Marketing</td>
-              <td>2013</td>
-              <td class="text-right">€ 49,990</td>
-              <td class="td-actions text-right">
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-info btn-round btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">person</i>
-                </button>
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-success btn-round btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">edit</i>
-                </button>
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-danger btn-round btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">close</i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-center">5</td>
-              <td>Paul Dickens</td>
-              <td>Communication</td>
-              <td>2015</td>
-              <td class="text-right">€ 69,201</td>
-              <td class="td-actions text-right">
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-info btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">person</i>
-                </button>
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-success btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">edit</i>
-                </button>
-                <button
-                  type="button"
-                  rel="tooltip"
-                  class="btn btn-danger btn-just-icon btn-sm"
-                  data-original-title=""
-                  title=""
-                >
-                  <i class="material-icons">close</i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <React.Fragment>
+        {this.state.isLoading && <Spinner />}
+        <ProductList products={this.props.products} />
+      </React.Fragment>
     );
   }
 }
 
-export default HomePage;
+const mapStateToProps = (state) => ({
+  products: state.loadProducts.products,
+  state: state,
+});
+export default connect(mapStateToProps, { loadProducts })(HomePage);

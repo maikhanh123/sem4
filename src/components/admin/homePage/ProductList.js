@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ProductList = ({ products, onDeleteClick }) => (
+const ProductList = ({ products }) => (
   <table className="table">
     <thead>
       <tr>
@@ -16,15 +16,12 @@ const ProductList = ({ products, onDeleteClick }) => (
         return (
           <tr key={product.id}>
             <td>
-              <Link to={"/product/" + product.id}>{product.title}</Link>
+              <Link to={"/admin/product/" + product.id}>{product.title}</Link>
             </td>
             <td>{product.price} $</td>
             <td>{product.availableSizes.join()}</td>
             <td>
-              <button
-                className="btn btn-outline-danger"
-                onClick={() => onDeleteClick(product)}
-              >
+              <button className="btn btn-outline-danger" onClick={() => {}}>
                 Delete
               </button>
             </td>
