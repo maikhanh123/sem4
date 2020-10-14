@@ -19,6 +19,11 @@ function App() {
           path="/admin/product/:id"
           component={ManageProduct}
         />
+        <PrivateRoute
+          exact
+          path="/admin/addProduct"
+          component={ManageProduct}
+        />
         <Route exact path="/" component={ShopPage} />
         <Route path="/register" component={RegisterPage} />
         <Route path="/login" component={LoginPage} />

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { loadProducts } from "../../../redux/actions/admin/productActions";
 import PropTypes from "prop-types";
+import ProductForm from "./ProductForm";
 
 const newProduct = {
   id: null,
@@ -12,9 +13,26 @@ const newProduct = {
   price: null,
 };
 class ManageProduct extends React.Component {
+  state = {
+    isLoading: false,
+  };
+
+  componentDidMount() {
+    this.handleFetchProducts();
+  }
+
+  handleFetchProducts = () => {
+    this.setState({ isLoading: true });
+    this.props.loadProducts((res) => {
+      console.log("res", res);
+      this.setState({ isLoading: false });
+    });
+  };
+
   render() {
     console.log("aaaa");
-    return <div>add</div>;
+    const { product } = this.props;
+    return <ProductForm product={product} />;
   }
 }
 
@@ -37,11 +55,6 @@ export function getProductById(products, id) {
   return products.find((product) => product.id === id) || null;
 }
 
-ManageProduct.propTypes = {
-  product: PropTypes.object.isRequired,
-  loadProducts: PropTypes.array.isRequired,
-};
-
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
   const product =
@@ -53,4 +66,9 @@ const mapStateToProps = (state, ownProps) => {
     product,
   };
 };
+
+// const mapStateToProps = (state) => ({
+//   products: state.loadProducts.products,
+//   state: state,
+// });
 export default connect(mapStateToProps, { loadProducts })(ManageProduct);
